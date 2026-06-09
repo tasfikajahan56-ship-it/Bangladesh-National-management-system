@@ -179,12 +179,8 @@ ADMIN_USER (admin_id PK, username, password_hash, role)
 
 ## 👥 Team
 
-| Name | Student ID | Role |
-|------|-----------|------|
-| — | — | Database Designer |
-| — | — | SQL Developer |
-| — | — | UI Designer |
-| — | — | Documentation Lead |
+Name : Tasfika Jahan
+id : 251035016
 
 ---
 
