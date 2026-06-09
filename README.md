@@ -177,9 +177,8 @@ ADMIN_USER (admin_id PK, username, password_hash, role)
 
 ---
 
-## 👥 Team
 
-Name : Tasfika Jahan
+Name : Tasfika Jahan |
 id : 251035016
 
 ---
