@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BNIMS | Bangladesh National ID Management System</title>
+
+<!-- Bootstrap 5 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+<!-- Google Fonts - Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+
+<!-- Background Layer -->
+<div class="bg-layer"></div>
+<div class="bg-overlay"></div>
+
+<!-- Floating Particles -->
+<div class="particles" id="particles"></div>
+
+<div class="login-wrapper">
+
+  <div class="gov-header text-center">
+    <div class="emblem-badge">
+      <img src="assets/logo.png" alt="Government Logo" class="gov-logo">
+    </div>
+    <h6 class="gov-line">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h6>
+    <h6 class="gov-line-sub">People's Republic of Bangladesh</h6>
+  </div>
+
+  <div class="login-card glass-card">
+    <div class="login-card-header text-center">
+      <h2 class="portal-title">Bangladesh National ID<br>Management System</h2>
+      <p class="portal-subtitle">
+        <i class="fa-solid fa-shield-halved"></i>
+        Secure National Identity Database
+      </p>
+    </div>
+
+    <form id="loginForm" class="login-form" novalidate>
+      <div id="alertBox" class="alert-box d-none"></div>
+
+      <div class="form-floating-custom mb-3">
+        <label for="username"><i class="fa-solid fa-user"></i> Username</label>
+        <input type="text" class="form-control custom-input" id="username" placeholder="Enter username" autocomplete="off" required>
+        <div class="input-focus-line"></div>
+      </div>
+
+      <div class="form-floating-custom mb-2">
+        <label for="password"><i class="fa-solid fa-lock"></i> Password</label>
+        <div class="password-wrap">
+          <input type="password" class="form-control custom-input" id="password" placeholder="Enter password" required>
+          <span class="toggle-password" id="togglePassword">
+            <i class="fa-solid fa-eye"></i>
+          </span>
+        </div>
+        <div class="input-focus-line"></div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center my-3 flex-wrap gap-2">
+        <div class="form-check custom-check">
+          <input class="form-check-input" type="checkbox" id="rememberMe">
+          <label class="form-check-label" for="rememberMe">Remember Me</label>
+        </div>
+        <a href="#" class="forgot-link" data-bs-toggle="modal" data-bs-target="#forgotModal">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="btn btn-login w-100" id="loginBtn">
+        <span class="btn-text"><i class="fa-solid fa-right-to-bracket"></i> Login to Portal</span>
+        <span class="btn-loader d-none">
+          <span class="spinner-border spinner-border-sm" role="status"></span> Authenticating...
+        </span>
+      </button>
+
+      <div class="demo-hint mt-3 text-center">
+        <i class="fa-solid fa-circle-info"></i>
+        Demo Credentials — Username: <b>admin</b> &nbsp;|&nbsp; Password: <b>1234</b>
+      </div>
+    </form>
+  </div>
+
+  <footer class="login-footer text-center">
+    <div class="footer-divider"></div>
+    <p class="mb-1"><i class="fa-solid fa-graduation-cap"></i> Department of AI &amp; Data Science</p>
+    <p class="mb-0">Green University of Bangladesh</p>
+    <p class="copyright mt-2">&copy; 2026 BNIMS. All Rights Reserved. | For Academic Purpose Only</p>
+  </footer>
+
+</div>
+
+<!-- Forgot Password Modal -->
+<div class="modal fade" id="forgotModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content glass-card">
+      <div class="modal-header border-0">
+        <h5 class="modal-title"><i class="fa-solid fa-key"></i> Reset Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-muted">Please contact your system administrator or the NID helpdesk to reset your account password.</p>
+        <div class="mb-3">
+          <label class="form-label">Registered NID / Email</label>
+          <input type="text" class="form-control custom-input" placeholder="Enter your NID number or email">
+        </div>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-login" id="sendResetBtn">Send Reset Link</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
