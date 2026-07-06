@@ -1,0 +1,1064 @@
+/* ====================================
+   BNIMS - Bangladesh National ID Management System
+   style.css (Part 1)
+==================================== */
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* =====================
+   RESET
+===================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f4f7fb;
+    color:#333;
+    line-height:1.7;
+}
+
+img{
+    max-width:100%;
+}
+
+a{
+    text-decoration:none;
+}
+
+ul{
+    list-style:none;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+section{
+    padding:80px 0;
+}
+
+h1,h2,h3{
+    color:#0b3d2e;
+}
+
+/* =====================
+   BUTTONS
+===================== */
+
+.btn{
+    display:inline-block;
+    background:#006A4E;
+    color:#fff;
+    padding:12px 28px;
+    border-radius:8px;
+    transition:.3s;
+    font-weight:600;
+}
+
+.btn:hover{
+    background:#004f3a;
+    transform:translateY(-3px);
+}
+
+.btn.secondary{
+    background:#F42A41;
+}
+
+.btn.secondary:hover{
+    background:#d92037;
+}
+
+/* =====================
+   HEADER
+===================== */
+
+header{
+    width:100%;
+    background:#006A4E;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 12px rgba(0,0,0,.15);
+}
+
+.top-bar{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 0;
+}
+
+.logo h2{
+    color:white;
+    font-size:28px;
+}
+
+.logo p{
+    color:#ddd;
+    font-size:13px;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    color:white;
+    font-weight:500;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#ffd54f;
+}
+
+/* =====================
+   HERO
+===================== */
+
+.hero{
+    height:90vh;
+
+    background:linear-gradient(rgba(0,0,0,.65),
+    rgba(0,0,0,.65)),
+    url("https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+}
+
+.hero-content{
+    color:white;
+    width:80%;
+    max-width:900px;
+}
+
+.hero h1{
+
+    font-size:55px;
+
+    margin-bottom:20px;
+
+    color:white;
+
+}
+
+.hero p{
+
+    font-size:20px;
+
+    margin-bottom:35px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+/* =====================
+   COMMON SECTION TITLE
+===================== */
+
+section h2{
+
+    text-align:center;
+
+    margin-bottom:50px;
+
+    font-size:38px;
+
+    position:relative;
+
+}
+
+section h2::after{
+
+    content:"";
+
+    width:80px;
+
+    height:4px;
+
+    background:#006A4E;
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    bottom:-15px;
+
+}
+
+/* =====================
+   CARD
+===================== */
+
+.card{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:12px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+    text-align:center;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.card i{
+
+    font-size:55px;
+
+    color:#006A4E;
+
+    margin-bottom:20px;
+
+}
+
+.card h3{
+
+    margin-bottom:15px;
+
+}
+
+.card p{
+
+    color:#666;
+
+}
+
+/* =====================
+   SIMPLE FADE ANIMATION
+===================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.hero-content{
+
+    animation:fadeUp 1s ease;
+
+}
+
+/* ====================================
+   BNIMS - style.css (Part 2)
+   About, Modules & Features
+==================================== */
+
+/* =====================
+   ABOUT SECTION
+===================== */
+
+.about{
+    background:#ffffff;
+}
+
+.about p{
+    text-align:center;
+    max-width:900px;
+    margin:0 auto 50px;
+    color:#555;
+    font-size:17px;
+    line-height:1.9;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+/* =====================
+   MODULE SECTION
+===================== */
+
+.modules{
+    background:#f5f7fa;
+}
+
+.module-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.module{
+
+    background:#fff;
+
+    padding:35px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    transition:.35s;
+}
+
+.module:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 35px rgba(0,0,0,.15);
+
+}
+
+.module i{
+
+    font-size:55px;
+
+    color:#006A4E;
+
+    margin-bottom:20px;
+
+}
+
+.module h3{
+
+    margin-bottom:15px;
+
+    color:#0b3d2e;
+
+}
+
+.module p{
+
+    color:#666;
+
+    line-height:1.8;
+
+}
+
+/* =====================
+   FEATURES
+===================== */
+
+.features{
+
+    background:white;
+
+}
+
+.feature-list{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:20px;
+
+}
+
+.feature{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    background:#fff;
+
+    padding:20px;
+
+    border-radius:12px;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.feature:hover{
+
+    background:#006A4E;
+
+    color:white;
+
+    transform:translateX(8px);
+
+}
+
+.feature:hover p{
+
+    color:white;
+
+}
+
+.feature i{
+
+    width:45px;
+
+    height:45px;
+
+    background:#006A4E;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    font-size:18px;
+
+    flex-shrink:0;
+
+}
+
+.feature:hover i{
+
+    background:white;
+
+    color:#006A4E;
+
+}
+
+.feature p{
+
+    font-size:16px;
+
+    color:#444;
+
+    font-weight:500;
+
+}
+
+/* =====================
+   HOVER EFFECT
+===================== */
+
+.card,
+.module,
+.feature{
+
+    animation:fadeUp .8s ease;
+
+}
+
+/* ====================================
+   BNIMS - style.css (Part 3)
+   Roadmap, Statistics, Contact,
+   Footer & Responsive Design
+==================================== */
+
+/* =====================
+   ROADMAP
+===================== */
+
+.roadmap{
+    background:#f5f7fa;
+}
+
+.roadmap-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.week{
+    background:#fff;
+    padding:25px;
+    border-left:6px solid #006A4E;
+    border-radius:10px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.week:hover{
+    transform:translateY(-8px);
+}
+
+.week h3{
+    color:#006A4E;
+    margin-bottom:10px;
+}
+
+.week p{
+    color:#555;
+}
+
+/* =====================
+   STATISTICS
+===================== */
+
+.statistics{
+    background:#006A4E;
+    color:#fff;
+}
+
+.statistics h2{
+    color:#fff;
+}
+
+.statistics h2::after{
+    background:#fff;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.stat-card{
+    background:rgba(255,255,255,.12);
+    padding:35px;
+    border-radius:12px;
+    text-align:center;
+    transition:.3s;
+}
+
+.stat-card:hover{
+    transform:translateY(-8px);
+    background:rgba(255,255,255,.20);
+}
+
+.stat-card h3{
+    color:#fff;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.stat-card p{
+    color:#f1f1f1;
+    font-size:18px;
+}
+
+/* =====================
+   CONTACT
+===================== */
+
+.contact{
+    background:#fff;
+}
+
+.contact-box{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.contact-item{
+    background:#fff;
+    padding:30px;
+    text-align:center;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.contact-item:hover{
+    transform:translateY(-8px);
+}
+
+.contact-item i{
+    font-size:45px;
+    color:#006A4E;
+    margin-bottom:15px;
+}
+
+.contact-item h3{
+    margin-bottom:10px;
+}
+
+.contact-item p{
+    color:#666;
+}
+
+/* =====================
+   FOOTER
+===================== */
+
+footer{
+    background:#0b3d2e;
+    color:#fff;
+    text-align:center;
+    padding:50px 20px;
+}
+
+footer h2{
+    color:#fff;
+    margin-bottom:15px;
+}
+
+footer p{
+    margin:10px 0;
+    color:#ddd;
+}
+
+footer .btn{
+    margin-top:20px;
+}
+
+/* =====================
+   SCROLLBAR
+===================== */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#eee;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#006A4E;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#004f3a;
+}
+
+/* =====================
+   RESPONSIVE DESIGN
+===================== */
+
+@media(max-width:992px){
+
+    .top-bar{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:18px;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    section{
+        padding:60px 0;
+    }
+
+    .hero{
+        height:auto;
+        padding:100px 20px;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    section h2{
+        font-size:30px;
+    }
+
+    .stats-grid,
+    .roadmap-grid,
+    .about-grid,
+    .module-grid,
+    .feature-list,
+    .contact-box{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .logo h2{
+        font-size:22px;
+    }
+
+    .logo p{
+        font-size:11px;
+    }
+
+    nav ul{
+        gap:12px;
+    }
+
+    nav a{
+        font-size:14px;
+    }
+
+    .btn{
+        width:100%;
+        text-align:center;
+    }
+
+    .hero h1{
+        font-size:28px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+}
+
+/* =====================================================
+   LOGIN PAGE
+===================================================== */
+
+.login-page{
+    margin:0;
+    padding:0;
+    font-family:'Poppins',sans-serif;
+
+    background:linear-gradient(rgba(0,106,78,.85),
+    rgba(0,80,60,.85)),
+    url("https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.login-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+.login-card{
+
+    width:420px;
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:40px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+    animation:fadeUp .8s ease;
+}
+
+.login-header{
+
+    text-align:center;
+
+    margin-bottom:30px;
+}
+
+.login-logo{
+
+    font-size:70px;
+
+    color:#006A4E;
+
+    margin-bottom:15px;
+}
+
+.login-header h1{
+
+    color:#006A4E;
+
+    font-size:32px;
+
+    margin-bottom:10px;
+}
+
+.login-header p{
+
+    color:#666;
+
+    font-size:14px;
+}
+
+/* ========================= */
+
+.input-group{
+
+    margin-bottom:20px;
+}
+
+.input-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+}
+
+.input-box{
+
+    display:flex;
+
+    align-items:center;
+
+    border:1px solid #ccc;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    background:white;
+}
+
+.input-box i{
+
+    width:50px;
+
+    text-align:center;
+
+    color:#006A4E;
+
+    font-size:18px;
+}
+
+.input-box input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    padding:15px 10px;
+
+    font-size:15px;
+}
+
+.toggle-password{
+
+    cursor:pointer;
+
+    padding-right:15px;
+}
+
+select{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    border:1px solid #ccc;
+
+    outline:none;
+
+    font-size:15px;
+}
+
+/* ========================= */
+
+.login-options{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:20px 0;
+
+    font-size:14px;
+}
+
+.login-options a{
+
+    color:#006A4E;
+
+    font-weight:600;
+}
+
+.login-options a:hover{
+
+    text-decoration:underline;
+}
+
+/* ========================= */
+
+.login-btn{
+
+    width:100%;
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:15px;
+
+    font-size:17px;
+
+    border-radius:10px;
+}
+
+.login-btn i{
+
+    margin-right:8px;
+}
+
+/* ========================= */
+
+.login-footer{
+
+    text-align:center;
+
+    margin-top:30px;
+
+    border-top:1px solid #ddd;
+
+    padding-top:20px;
+}
+
+.login-footer p{
+
+    margin:6px 0;
+
+    color:#555;
+}
+
+.login-footer strong{
+
+    color:#006A4E;
+}
+
+/* ========================= */
+
+.input-box:focus-within{
+
+    border-color:#006A4E;
+
+    box-shadow:0 0 8px rgba(0,106,78,.3);
+}
+
+select:focus{
+
+    border-color:#006A4E;
+
+    box-shadow:0 0 8px rgba(0,106,78,.3);
+}
+
+/* ========================= */
+
+.login-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 20px rgba(0,106,78,.3);
+}
+
+/* ========================= */
+
+@media(max-width:500px){
+
+.login-card{
+
+    width:100%;
+
+    padding:25px;
+
+}
+
+.login-header h1{
+
+    font-size:26px;
+
+}
+
+.login-logo{
+
+    font-size:55px;
+
+}
+
+.login-options{
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+}

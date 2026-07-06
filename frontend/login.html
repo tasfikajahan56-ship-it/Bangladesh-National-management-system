@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BNIMS Login</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body class="login-page">
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+            <div class="login-header">
+
+                <i class="fa-solid fa-id-card login-logo"></i>
+
+                <h1>BNIMS</h1>
+
+                <p>Bangladesh National ID Management System</p>
+
+            </div>
+
+            <form id="loginForm">
+
+                <!-- Username -->
+
+                <div class="input-group">
+
+                    <label>Username</label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <input
+                            type="text"
+                            id="username"
+                            placeholder="Enter Username"
+                            required>
+
+                    </div>
+
+                </div>
+
+                <!-- Password -->
+
+                <div class="input-group">
+
+                    <label>Password</label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter Password"
+                            required>
+
+                        <i
+                            class="fa-solid fa-eye toggle-password"
+                            id="togglePassword"></i>
+
+                    </div>
+
+                </div>
+
+                <!-- Role -->
+
+                <div class="input-group">
+
+                    <label>Login As</label>
+
+                    <select id="role">
+
+                        <option value="admin">
+                            Administrator
+                        </option>
+
+                        <option value="officer">
+                            Officer
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- Remember -->
+
+                <div class="login-options">
+
+                    <label>
+
+                        <input type="checkbox">
+
+                        Remember Me
+
+                    </label>
+
+                    <a href="#">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+                <!-- Login Button -->
+
+                <button
+                    type="submit"
+                    class="btn login-btn">
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+
+                    Login
+
+                </button>
+
+            </form>
+
+            <div class="login-footer">
+
+                <p>
+
+                    Demo Login
+
+                </p>
+
+                <p>
+
+                    Username:
+                    <strong>admin</strong>
+
+                </p>
+
+                <p>
+
+                    Password:
+                    <strong>1234</strong>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+        <!-- JavaScript -->
+
+    <script>
+
+        // ==========================
+        // Show / Hide Password
+        // ==========================
+
+        const togglePassword =
+            document.getElementById("togglePassword");
+
+        const password =
+            document.getElementById("password");
+
+        togglePassword.addEventListener("click", function(){
+
+            if(password.type==="password"){
+
+                password.type="text";
+
+                this.classList.remove("fa-eye");
+
+                this.classList.add("fa-eye-slash");
+
+            }else{
+
+                password.type="password";
+
+                this.classList.remove("fa-eye-slash");
+
+                this.classList.add("fa-eye");
+
+            }
+
+        });
+
+        // ==========================
+        // Login Validation
+        // ==========================
+
+        document.getElementById("loginForm")
+        .addEventListener("submit",function(e){
+
+            e.preventDefault();
+
+            const username =
+                document.getElementById("username").value.trim();
+
+            const pass =
+                document.getElementById("password").value.trim();
+
+            const role =
+                document.getElementById("role").value;
+
+            if(username==="admin" && pass==="1234"){
+
+                alert("Login Successful!");
+
+                localStorage.setItem("bnimsUser",username);
+
+                localStorage.setItem("bnimsRole",role);
+
+                window.location.href="dashboard.html";
+
+            }else{
+
+                alert("Invalid Username or Password!");
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bangladesh National ID Management System</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="top-bar">
+
+<div class="logo">
+
+<h2>
+<i class="fa-solid fa-id-card"></i>
+BNIMS
+</h2>
+
+<p>Bangladesh National ID Management System</p>
+
+</div>
+
+<nav>
+
+<ul>
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#modules">Modules</a></li>
+
+<li><a href="#roadmap">Roadmap</a></li>
+
+<li><a href="#features">Features</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+<div class="nav-buttons">
+    <a href="login.html" class="btn">Login</a>
+
+    <!-- <a href="dashboard.html" class="btn secondary">
+        Dashboard
+    </a> -->
+</div>
+</div>
+
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<h1>
+
+Bangladesh National ID
+Management System
+
+</h1>
+
+<p>
+
+A modern DBMS course project for securely managing citizen
+information, address records, family information,
+verification services and administrative operations.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#about" class="btn">
+Learn More
+</a>
+
+
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about" class="about">
+
+<div class="container">
+
+<h2>About BNIMS</h2>
+
+<p>
+
+The Bangladesh National ID Management System (BNIMS)
+is a database-driven application designed to maintain
+citizen identity information using a normalized
+relational database.
+
+This project demonstrates Database Management System
+(DBMS) concepts including relational schema,
+normalization, SQL queries, CRUD operations,
+and user interface design.
+
+</p>
+
+<div class="about-grid">
+
+<div class="card">
+
+<i class="fa-solid fa-database"></i>
+
+<h3>Centralized Database</h3>
+
+<p>
+
+Store citizen information in a secure
+relational database.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+<h3>Secure Verification</h3>
+
+<p>
+
+Quick NID verification with secure
+identity validation.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-users"></i>
+
+<h3>Family Records</h3>
+
+<p>
+
+Maintain parent, spouse and family
+relationships efficiently.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= MODULES ================= -->
+
+<section id="modules" class="modules">
+
+<div class="container">
+
+<h2>System Modules</h2>
+
+<div class="module-grid">
+
+<div class="module">
+
+<i class="fa-solid fa-user"></i>
+
+<h3>Citizen Information</h3>
+
+<p>
+
+Store NID number, full name,
+date of birth, gender,
+blood group and nationality.
+
+</p>
+
+</div>
+
+<div class="module">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<h3>Address Management</h3>
+
+<p>
+
+Present address,
+permanent address,
+division,
+district,
+upazila,
+postal code.
+
+</p>
+
+</div>
+
+<div class="module">
+
+<i class="fa-solid fa-people-roof"></i>
+
+<h3>Family Information</h3>
+
+<p>
+
+Father,
+Mother,
+Spouse,
+Children,
+Guardian Information.
+
+</p>
+
+</div>
+
+<div class="module">
+
+<i class="fa-solid fa-circle-check"></i>
+
+<h3>Verification</h3>
+
+<p>
+
+Search and verify
+National ID records instantly.
+
+</p>
+
+</div>
+
+<div class="module">
+
+<i class="fa-solid fa-user-shield"></i>
+
+<h3>Administrative Panel</h3>
+
+<p>
+
+Manage users,
+reports,
+logs,
+database settings
+and permissions.
+
+</p>
+
+</div>
+
+<div class="module">
+
+<i class="fa-solid fa-chart-column"></i>
+
+<h3>Reports</h3>
+
+<p>
+
+Generate reports,
+statistics,
+citizen summaries
+and verification history.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section id="features" class="features">
+
+<div class="container">
+
+<h2>Project Features</h2>
+
+<div class="feature-list">
+
+<div class="feature">
+
+<i class="fa-solid fa-check"></i>
+
+<p>Fully Normalized Database (3NF)</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-check"></i>
+
+<p>CRUD Operations</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-check"></i>
+
+<p>Primary Key & Foreign Key</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-check"></i>
+
+<p>Citizen Verification</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-check"></i>
+
+<p>Administrative Dashboard</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-check"></i>
+
+<p>Role Based Login</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-check"></i>
+
+<p>Responsive Interface</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-check"></i>
+
+<p>GitHub Version Control</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ================= ROADMAP ================= -->
+
+<section id="roadmap" class="roadmap">
+
+    <div class="container">
+
+        <h2>11-Week Project Roadmap</h2>
+
+        <div class="roadmap-grid">
+
+            <div class="week">
+                <h3>Week 1</h3>
+                <p>Project Topic Selection</p>
+            </div>
+
+            <div class="week">
+                <h3>Week 2</h3>
+                <p>Literature Review</p>
+            </div>
+
+            <div class="week">
+                <h3>Week 3</h3>
+                <p>Requirement Analysis</p>
+            </div>
+
+            <div class="week">
+                <h3>Week 4</h3>
+                <p>ER Diagram Design</p>
+            </div>
+
+            <div class="week">
+                <h3>Week 5</h3>
+                <p>Schema & Normalization</p>
+            </div>
+
+            <div class="week">
+                <h3>Week 6</h3>
+                <p>Create SQL Tables</p>
+            </div>
+
+            <div class="week">
+                <h3>Week 7</h3>
+                <p>Insert Data & CRUD Queries</p>
+            </div>
+
+            <div class="week">
+                <h3>Week 8</h3>
+                <p>User Interface Design</p>
+            </div>
+
+            <div class="week">
+                <h3>Week 9</h3>
+                <p>Testing & Integration</p>
+            </div>
+
+            <div class="week">
+                <h3>Week 10</h3>
+                <p>Documentation & Optimization</p>
+            </div>
+
+            <div class="week">
+                <h3>Week 11</h3>
+                <p>Presentation & Final Submission</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= STATISTICS ================= -->
+
+<section class="statistics">
+
+    <div class="container">
+
+        <h2>Project Statistics</h2>
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <h3>170M+</h3>
+                <p>Citizens</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>64</h3>
+                <p>Districts</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>8</h3>
+                <p>Divisions</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>100%</h3>
+                <p>Normalized Database</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact" class="contact">
+
+    <div class="container">
+
+        <h2>Contact Information</h2>
+
+        <div class="contact-box">
+
+            <div class="contact-item">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <h3>Location</h3>
+
+                <p>Bangladesh</p>
+
+            </div>
+
+            <div class="contact-item">
+
+                <i class="fa-solid fa-envelope"></i>
+
+                <h3>Email</h3>
+
+                <p>bnims@example.com</p>
+
+            </div>
+
+            <div class="contact-item">
+
+                <i class="fa-solid fa-phone"></i>
+
+                <h3>Phone</h3>
+
+                <p>+880 1700-000000</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container">
+
+        <h2>Bangladesh National ID Management System</h2>
+
+        <p>
+            DBMS Course Project <br>
+            Department of Computer Science & Engineering
+        </p>
+
+        <p>
+            © 2026 BNIMS. All Rights Reserved.
+        </p>
+
+        <a href="dashboard.html" class="btn">
+            Open Dashboard
+        </a>
+
+    </div>
+
+</footer>
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+
+</body>
+</html>
