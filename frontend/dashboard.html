@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BNIMS Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <div class="top-bar">
+
+        <div class="logo">
+            <h2><i class="fa-solid fa-id-card"></i> BNIMS</h2>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Citizens</a></li>
+                <li><a href="#">Reports</a></li>
+            </ul>
+        </nav>
+
+        <a href="login.html" class="btn">Logout</a>
+
+    </div>
+</header>
+
+<section class="container">
+
+    <h2 style="margin-top:40px;">Dashboard</h2>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <h3>170M+</h3>
+            <p>Total Citizens</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>165M</h3>
+            <p>Verified Citizens</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>5M</h3>
+            <p>Pending Verification</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>64</h3>
+            <p>Districts</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="container">
+
+    <h2>Recent Citizens</h2>
+
+    <table style="width:100%; border-collapse:collapse; background:white;">
+
+        <tr style="background:#006A4E; color:white;">
+            <th style="padding:12px;">NID</th>
+            <th>Name</th>
+            <th>District</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            <td style="padding:12px;">1234567890</td>
+            <td>Rahim Ahmed</td>
+            <td>Dhaka</td>
+            <td>Verified</td>
+        </tr>
+
+        <tr>
+            <td style="padding:12px;">2345678901</td>
+            <td>Karim Hasan</td>
+            <td>Chattogram</td>
+            <td>Pending</td>
+        </tr>
+
+        <tr>
+            <td style="padding:12px;">3456789012</td>
+            <td>Nusrat Jahan</td>
+            <td>Rajshahi</td>
+            <td>Verified</td>
+        </tr>
+
+    </table>
+
+</section>
+
+<footer>
+
+    <div class="container">
+
+        <p>© 2026 Bangladesh National ID Management System</p>
+
+    </div>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
