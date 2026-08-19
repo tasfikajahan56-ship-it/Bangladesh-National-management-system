@@ -5,23 +5,14 @@
 // Smooth Scrolling
 document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', function (e) {
-
         const targetId = this.getAttribute('href');
-
         if (targetId.startsWith("#")) {
-
             e.preventDefault();
-
             const target = document.querySelector(targetId);
-
             if (target) {
-                target.scrollIntoView({
-                    behavior: "smooth"
-                });
+                target.scrollIntoView({ behavior: "smooth" });
             }
-
         }
-
     });
 });
 
@@ -33,30 +24,19 @@ const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("nav a");
 
 window.addEventListener("scroll", () => {
-
     let current = "";
-
     sections.forEach(section => {
-
         const sectionTop = section.offsetTop - 120;
-        const sectionHeight = section.clientHeight;
-
         if (pageYOffset >= sectionTop) {
             current = section.getAttribute("id");
         }
-
     });
-
     navLinks.forEach(link => {
-
         link.classList.remove("active");
-
         if (link.getAttribute("href") === "#" + current) {
             link.classList.add("active");
         }
-
     });
-
 });
 
 // ===============================
@@ -66,17 +46,11 @@ window.addEventListener("scroll", () => {
 const header = document.querySelector("header");
 
 window.addEventListener("scroll", () => {
-
     if (window.scrollY > 50) {
-
         header.style.boxShadow = "0 6px 20px rgba(0,0,0,.25)";
-
     } else {
-
         header.style.boxShadow = "none";
-
     }
-
 });
 
 // ===============================
@@ -84,95 +58,55 @@ window.addEventListener("scroll", () => {
 // ===============================
 
 const counters = document.querySelectorAll(".stat-card h3");
-
 let started = false;
 
 window.addEventListener("scroll", () => {
-
     const stats = document.querySelector(".statistics");
-
     if (!stats) return;
-
     const trigger = stats.offsetTop - 400;
 
     if (window.scrollY > trigger && !started) {
-
         counters.forEach(counter => {
-
             const targetText = counter.innerText;
-
             let target = parseInt(targetText.replace(/\D/g, ""));
-
             if (isNaN(target)) return;
-
             let count = 0;
-
             const speed = target / 100;
-
             const update = () => {
-
                 count += speed;
-
                 if (count < target) {
-
                     counter.innerText = Math.floor(count);
-
                     requestAnimationFrame(update);
-
                 } else {
-
                     counter.innerText = targetText;
-
                 }
-
             };
-
             update();
-
         });
-
         started = true;
-
     }
-
 });
 
 // ===============================
 // Fade Animation on Scroll
 // ===============================
 
-const cards = document.querySelectorAll(
-".card,.module,.feature,.week,.stat-card,.contact-item"
-);
+const cards = document.querySelectorAll(".card,.module,.feature,.week,.stat-card,.contact-item");
 
 const observer = new IntersectionObserver(entries => {
-
     entries.forEach(entry => {
-
         if (entry.isIntersecting) {
-
             entry.target.style.opacity = "1";
-
             entry.target.style.transform = "translateY(0)";
-
         }
-
     });
-
-}, {
-    threshold: .2
-});
+}, { threshold: .2 });
 
 cards.forEach(card => {
-
     card.style.opacity = "0";
-
     card.style.transform = "translateY(40px)";
-
     card.style.transition = ".8s";
-
     observer.observe(card);
-
 });
 
 // ===============================
@@ -180,11 +114,8 @@ cards.forEach(card => {
 // ===============================
 
 const topBtn = document.createElement("button");
-
 topBtn.innerHTML = "↑";
-
 topBtn.id = "topBtn";
-
 document.body.appendChild(topBtn);
 
 topBtn.style.position = "fixed";
@@ -203,29 +134,15 @@ topBtn.style.zIndex = "999";
 topBtn.style.boxShadow = "0 5px 15px rgba(0,0,0,.3)";
 
 window.addEventListener("scroll", () => {
-
     if (window.scrollY > 500) {
-
         topBtn.style.display = "block";
-
     } else {
-
         topBtn.style.display = "none";
-
     }
-
 });
 
 topBtn.addEventListener("click", () => {
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
+    window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 // ===============================
@@ -233,9 +150,7 @@ topBtn.addEventListener("click", () => {
 // ===============================
 
 window.addEventListener("load", () => {
-
     console.log("BNIMS Loaded Successfully");
-
 });
 
 // ===============================
@@ -245,22 +160,17 @@ window.addEventListener("load", () => {
 const buttons = document.querySelectorAll(".btn");
 
 buttons.forEach(btn => {
-
     btn.addEventListener("mouseenter", () => {
-
         btn.style.transform = "scale(1.05)";
-
     });
-
     btn.addEventListener("mouseleave", () => {
-
         btn.style.transform = "scale(1)";
-
     });
-
-
-
 });
+
+// ===============================
+// Login
+// ===============================
 
 function login() {
     const username = document.getElementById("username").value;
@@ -316,8 +226,77 @@ async function searchCitizen() {
                 <tr><td style="padding:10px;">District</td><td>${c.district_name || 'N/A'}</td></tr>
                 <tr><td style="padding:10px;">Division</td><td>${c.division_name || 'N/A'}</td></tr>
             </table>
+            <div style="margin-top:15px; display:flex; gap:10px;">
+                <button onclick="updateCitizen('${c.nid_no}')" class="btn" style="background:#e0a800;">Update Blood Group</button>
+                <button onclick="deleteCitizen('${c.nid_no}')" class="btn" style="background:#c0392b;">Delete Citizen</button>
+            </div>
         `;
     } catch (error) {
         resultBox.innerHTML = "<p style='color:red;'>Could not connect to server. Is the backend running?</p>";
+    }
+}
+
+// ===============================
+// Update & Delete Citizen
+// ===============================
+
+async function updateCitizen(nid) {
+    const newBloodGroup = prompt("Enter new Blood Group (e.g. A+, B+, O-):");
+
+    if (!newBloodGroup) return;
+
+    try {
+        const getResponse = await fetch(`http://localhost:5000/api/citizens/${nid}`);
+        const getResult = await getResponse.json();
+
+        if (!getResult.success) {
+            alert("Could not fetch current citizen data.");
+            return;
+        }
+
+        const c = getResult.data;
+
+        const response = await fetch(`http://localhost:5000/api/citizens/${nid}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                full_name: c.full_name,
+                dob: c.dob.split("T")[0],
+                gender: c.gender,
+                blood_group: newBloodGroup,
+                marital_status: c.marital_status
+            })
+        });
+
+        const result = await response.json();
+        alert(result.message);
+
+        if (result.success) {
+            searchCitizen();
+        }
+    } catch (error) {
+        alert("Update failed. Is the backend running?");
+    }
+}
+
+async function deleteCitizen(nid) {
+    const confirmDelete = confirm(`Are you sure you want to delete citizen ${nid}? This cannot be undone.`);
+
+    if (!confirmDelete) return;
+
+    try {
+        const response = await fetch(`http://localhost:5000/api/citizens/${nid}`, {
+            method: "DELETE"
+        });
+
+        const result = await response.json();
+        alert(result.message);
+
+        if (result.success) {
+            document.getElementById("searchResult").innerHTML = "";
+            document.getElementById("searchNid").value = "";
+        }
+    } catch (error) {
+        alert("Delete failed. Is the backend running?");
     }
 }

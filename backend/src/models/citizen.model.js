@@ -28,6 +28,22 @@ class CitizenModel {
     const [result] = await db.execute(query, [nid_no, full_name, dob, gender, blood_group, marital_status]);
     return result;
   }
+    static async update(nid_no, citizenData) {
+    const { full_name, dob, gender, blood_group, marital_status } = citizenData;
+    const query = `
+      UPDATE CITIZEN
+      SET full_name = ?, dob = ?, gender = ?, blood_group = ?, marital_status = ?
+      WHERE nid_no = ?
+    `;
+    const [result] = await db.execute(query, [full_name, dob, gender, blood_group, marital_status, nid_no]);
+    return result;
+  }
+
+  static async delete(nid_no) {
+    const query = `DELETE FROM CITIZEN WHERE nid_no = ?`;
+    const [result] = await db.execute(query, [nid_no]);
+    return result;
+  }
 }
 
 module.exports = CitizenModel;

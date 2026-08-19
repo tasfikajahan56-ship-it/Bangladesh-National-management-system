@@ -30,3 +30,36 @@ exports.createCitizen = async (req, res, next) => {
     next(error);
   }
 };
+exports.updateCitizen = async (req, res, next) => {
+  try {
+    const { nid_no } = req.params;
+    const result = await CitizenModel.update(nid_no, req.body);
+
+    if (result.affectedRows === 0) {
+      return sendResponse(res, 404, false, 'Citizen record not found');
+    }
+
+    await logAuditTrail(nid_no, 'UPDATE_CITIZEN', req.user?.admin_id || 1);
+
+    return sendResponse(res, 200, true, 'Citizen updated successfully');
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.deleteCitizen = async (req, res, next) => {
+  try {
+    const { nid_no } = req.params;
+    const result = await CitizenModel.delete(nid_no);
+
+    if (result.affectedRows === 0) {
+      return sendResponse(res, 404, false, 'Citizen record not found');
+    }
+
+    await logAuditTrail(nid_no, 'DELETE_CITIZEN', req.user?.admin_id || 1);
+
+    return sendResponse(res, 200, true, 'Citizen deleted successfully');
+  } catch (error) {
+    next(error);
+  }
+};
