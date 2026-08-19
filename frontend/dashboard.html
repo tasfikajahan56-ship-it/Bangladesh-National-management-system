@@ -62,7 +62,19 @@
     </div>
 
 </section>
+<section class="container">
 
+    <h2 style="margin-top:40px;">Search Citizen by NID</h2>
+
+    <div style="display:flex; gap:10px; margin-bottom:30px;">
+        <input type="text" id="searchNid" placeholder="Enter NID number (e.g. 1998269260000001)"
+               style="flex:1; padding:12px; border:1px solid #ccc; border-radius:6px; font-size:15px;">
+        <button onclick="searchCitizen()" class="btn">Search</button>
+    </div>
+
+    <div id="searchResult"></div>
+
+</section>
 <section class="container">
 
     <h2>Recent Citizens</h2>

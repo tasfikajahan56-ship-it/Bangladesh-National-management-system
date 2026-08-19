@@ -272,3 +272,52 @@ function login() {
         alert("Invalid Username or Password!");
     }
 }
+
+// ===============================
+// Search Citizen from Backend API
+// ===============================
+
+async function searchCitizen() {
+    const nid = document.getElementById("searchNid").value.trim();
+    const resultBox = document.getElementById("searchResult");
+
+    if (!nid) {
+        resultBox.innerHTML = "<p style='color:red;'>Please enter an NID number.</p>";
+        return;
+    }
+
+    resultBox.innerHTML = "<p>Searching...</p>";
+
+    try {
+        const response = await fetch(`http://localhost:5000/api/citizens/${nid}`);
+        const result = await response.json();
+
+        if (!result.success) {
+            resultBox.innerHTML = `<p style='color:red;'>${result.message}</p>`;
+            return;
+        }
+
+        const c = result.data;
+
+        resultBox.innerHTML = `
+            <table style="width:100%; border-collapse:collapse; background:white; margin-top:10px;">
+                <tr style="background:#006A4E; color:white;">
+                    <th style="padding:12px;">Field</th>
+                    <th>Value</th>
+                </tr>
+                <tr><td style="padding:10px;">NID</td><td>${c.nid_no}</td></tr>
+                <tr><td style="padding:10px;">Full Name</td><td>${c.full_name}</td></tr>
+                <tr><td style="padding:10px;">Date of Birth</td><td>${c.dob}</td></tr>
+                <tr><td style="padding:10px;">Gender</td><td>${c.gender}</td></tr>
+                <tr><td style="padding:10px;">Blood Group</td><td>${c.blood_group || 'N/A'}</td></tr>
+                <tr><td style="padding:10px;">Marital Status</td><td>${c.marital_status}</td></tr>
+                <tr><td style="padding:10px;">Present Address</td><td>${c.present_address || 'N/A'}</td></tr>
+                <tr><td style="padding:10px;">Upazila</td><td>${c.upazila_name || 'N/A'}</td></tr>
+                <tr><td style="padding:10px;">District</td><td>${c.district_name || 'N/A'}</td></tr>
+                <tr><td style="padding:10px;">Division</td><td>${c.division_name || 'N/A'}</td></tr>
+            </table>
+        `;
+    } catch (error) {
+        resultBox.innerHTML = "<p style='color:red;'>Could not connect to server. Is the backend running?</p>";
+    }
+}
