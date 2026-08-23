@@ -146,14 +146,14 @@
                 <p>
 
                     Username:
-                    <strong>admin</strong>
+                    <strong>sysadmin</strong>
 
                 </p>
 
                 <p>
 
                     Password:
-                    <strong>1234</strong>
+                    <strong>admin123</strong>
 
                 </p>
 
@@ -199,11 +199,11 @@
         });
 
         // ==========================
-        // Login Validation
+        // Login - Connect to Backend
         // ==========================
 
         document.getElementById("loginForm")
-        .addEventListener("submit",function(e){
+        .addEventListener("submit", async function(e){
 
             e.preventDefault();
 
@@ -216,20 +216,26 @@
             const role =
                 document.getElementById("role").value;
 
-            if(username==="admin" && pass==="1234"){
+            try {
+                const response = await fetch("http://localhost:5000/api/auth/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username: username, password: pass })
+                });
 
-                alert("Login Successful!");
+                const result = await response.json();
 
-                localStorage.setItem("bnimsUser",username);
-
-                localStorage.setItem("bnimsRole",role);
-
-                window.location.href="dashboard.html";
-
-            }else{
-
-                alert("Invalid Username or Password!");
-
+                if (result.success) {
+                    alert("Login Successful!");
+                    localStorage.setItem("bnimsUser", result.data.admin.username);
+                    localStorage.setItem("bnimsRole", role);
+                    localStorage.setItem("bnimsToken", result.data.token);
+                    window.location.href = "dashboard.html";
+                } else {
+                    alert(result.message || "Invalid Username or Password!");
+                }
+            } catch (error) {
+                alert("Could not connect to server. Is the backend running?");
             }
 
         });

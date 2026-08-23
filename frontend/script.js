@@ -209,6 +209,13 @@ async function searchCitizen() {
 
         const c = result.data;
 
+        // Fetch family info in parallel (each may or may not exist)
+        const [fatherRes, motherRes, spouseRes] = await Promise.all([
+            fetch(`http://localhost:5000/api/fathers/${nid}`).then(r => r.json()).catch(() => ({ success: false })),
+            fetch(`http://localhost:5000/api/mothers/${nid}`).then(r => r.json()).catch(() => ({ success: false })),
+            fetch(`http://localhost:5000/api/spouses/${nid}`).then(r => r.json()).catch(() => ({ success: false }))
+        ]);
+
         resultBox.innerHTML = `
             <table style="width:100%; border-collapse:collapse; background:white; margin-top:10px;">
                 <tr style="background:#006A4E; color:white;">
@@ -226,6 +233,18 @@ async function searchCitizen() {
                 <tr><td style="padding:10px;">District</td><td>${c.district_name || 'N/A'}</td></tr>
                 <tr><td style="padding:10px;">Division</td><td>${c.division_name || 'N/A'}</td></tr>
             </table>
+
+            <h3 style="margin-top:25px; color:#006A4E;">Family Information</h3>
+            <table style="width:100%; border-collapse:collapse; background:white; margin-top:10px;">
+                <tr style="background:#006A4E; color:white;">
+                    <th style="padding:12px;">Relation</th>
+                    <th>Name</th>
+                </tr>
+                <tr><td style="padding:10px;">Father</td><td>${fatherRes.success ? fatherRes.data.name : 'Not on record'}</td></tr>
+                <tr><td style="padding:10px;">Mother</td><td>${motherRes.success ? motherRes.data.name : 'Not on record'}</td></tr>
+                <tr><td style="padding:10px;">Spouse</td><td>${spouseRes.success ? spouseRes.data.name : 'Not on record'}</td></tr>
+            </table>
+
             <div style="margin-top:15px; display:flex; gap:10px;">
                 <button onclick="updateCitizen('${c.nid_no}')" class="btn" style="background:#e0a800;">Update Blood Group</button>
                 <button onclick="deleteCitizen('${c.nid_no}')" class="btn" style="background:#c0392b;">Delete Citizen</button>
