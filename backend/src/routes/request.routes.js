@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../config/db'); 
+const db = require('../../config/db'); // সঠিক পাথ: config ফোল্ডারের db.js ফাইল
 
 // Reissue/Correction Request Route
 router.post('/', (req, res) => {
