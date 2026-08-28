@@ -52,3 +52,44 @@ CREATE TABLE VERIFICATION_LOG (
     FOREIGN KEY (nid_no) REFERENCES CITIZEN(nid_no),
     FOREIGN KEY (admin_id) REFERENCES ADMIN_USER(admin_id)
 );
+
+
+CREATE TABLE REISSUE_REQUEST (
+    request_id INT AUTO_INCREMENT PRIMARY KEY,
+    nid_no VARCHAR(17) NOT NULL,
+    request_type ENUM('Lost Card', 'Correction') NOT NULL,
+    reason TEXT NOT NULL,
+    status ENUM('Pending', 'Approved', 'Rejected') DEFAULT 'Pending',
+    applied_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (nid_no) REFERENCES CITIZEN(nid_no) ON DELETE CASCADE
+);
+
+CREATE TABLE PAYMENT (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    request_id INT NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    payment_status ENUM('Pending', 'Paid') DEFAULT 'Pending',
+    trx_id VARCHAR(50) UNIQUE,
+    payment_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (request_id) REFERENCES REISSUE_REQUEST(request_id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE BIOMETRIC_DATA (
+    bio_id INT AUTO_INCREMENT PRIMARY KEY,
+    nid_no VARCHAR(17) NOT NULL,
+    fingerprint_verified TINYINT(1) DEFAULT 0,
+    face_verified TINYINT(1) DEFAULT 0,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (nid_no) REFERENCES CITIZEN(nid_no) ON DELETE CASCADE
+);
+
+CREATE TABLE AUDIT_LOG (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    admin_id INT NOT NULL,
+    target_nid VARCHAR(17) NOT NULL,
+    action_performed VARCHAR(100) NOT NULL, -- e.g., 'Address Updated', 'Status Changed'
+    action_timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (admin_id) REFERENCES ADMIN_USER(admin_id),
+    FOREIGN KEY (target_nid) REFERENCES CITIZEN(nid_no)
+);
