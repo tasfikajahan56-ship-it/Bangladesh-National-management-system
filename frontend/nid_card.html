@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital NID Card</title>
+    <style>
+        .nid-card {
+            width: 400px;
+            height: 250px;
+            border: 2px solid #006A4E;
+            border-radius: 12px;
+            padding: 15px;
+            background: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+        .header { text-align: center; color: #006A4E; font-weight: bold; }
+        .red-circle { width: 15px; height: 15px; background: #C8102E; border-radius: 50%; display: inline-block; }
+        .details { margin-top: 15px; font-size: 14px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="nid-card">
+        <div class="header">
+            <span class="red-circle"></span> Government of the People's Republic of Bangladesh
+        </div>
+        <hr>
+        <div class="details">
+            <p><strong>Name:</strong> Tasfika Jahan</p>
+            <p><strong>NID No:</strong> 1998269260000001</p>
+            <p><strong>DOB:</strong> 12 May 1998</p>
+            <p><strong>Blood Group:</strong> A+</p>
+        </div>
+    </div>
+    <br>
+    <button onclick="window.print()">Print / Download PDF</button>
+</body>
+</html>
