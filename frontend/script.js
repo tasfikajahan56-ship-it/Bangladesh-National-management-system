@@ -2,6 +2,8 @@
 // BNIMS - script.js
 // ===============================
 
+const API_BASE_URL = 'http://localhost:5000/api';
+
 // Smooth Scrolling
 document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', function (e) {
@@ -16,10 +18,7 @@ document.querySelectorAll('nav a').forEach(link => {
     });
 });
 
-// ===============================
 // Active Navigation
-// ===============================
-
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("nav a");
 
@@ -39,10 +38,7 @@ window.addEventListener("scroll", () => {
     });
 });
 
-// ===============================
 // Sticky Header Shadow
-// ===============================
-
 const header = document.querySelector("header");
 
 window.addEventListener("scroll", () => {
@@ -53,10 +49,7 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// ===============================
 // Counter Animation
-// ===============================
-
 const counters = document.querySelectorAll(".stat-card h3");
 let started = false;
 
@@ -87,10 +80,7 @@ window.addEventListener("scroll", () => {
     }
 });
 
-// ===============================
 // Fade Animation on Scroll
-// ===============================
-
 const cards = document.querySelectorAll(".card,.module,.feature,.week,.stat-card,.contact-item");
 
 const observer = new IntersectionObserver(entries => {
@@ -109,10 +99,7 @@ cards.forEach(card => {
     observer.observe(card);
 });
 
-// ===============================
 // Back To Top Button
-// ===============================
-
 const topBtn = document.createElement("button");
 topBtn.innerHTML = "↑";
 topBtn.id = "topBtn";
@@ -145,18 +132,17 @@ topBtn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// ===============================
-// Welcome Message
-// ===============================
-
+// Welcome Message & Page Load Listeners
 window.addEventListener("load", () => {
     console.log("BNIMS Loaded Successfully");
+    
+    // Auto load dashboard stats if on dashboard page
+    if (window.location.pathname.includes('dashboard.html')) {
+        loadDashboardStats();
+    }
 });
 
-// ===============================
 // Dashboard Button Hover Effect
-// ===============================
-
 const buttons = document.querySelectorAll(".btn");
 
 buttons.forEach(btn => {
@@ -168,10 +154,7 @@ buttons.forEach(btn => {
     });
 });
 
-// ===============================
 // Login
-// ===============================
-
 function login() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -183,10 +166,7 @@ function login() {
     }
 }
 
-// ===============================
 // Search Citizen from Backend API
-// ===============================
-
 async function searchCitizen() {
     const nid = document.getElementById("searchNid").value.trim();
     const resultBox = document.getElementById("searchResult");
@@ -199,7 +179,7 @@ async function searchCitizen() {
     resultBox.innerHTML = "<p>Searching...</p>";
 
     try {
-        const response = await fetch(`http://localhost:5000/api/citizens/${nid}`);
+        const response = await fetch(`${API_BASE_URL}/citizens/${nid}`);
         const result = await response.json();
 
         if (!result.success) {
@@ -209,11 +189,11 @@ async function searchCitizen() {
 
         const c = result.data;
 
-        // Fetch family info in parallel (each may or may not exist)
+        // Fetch family info in parallel
         const [fatherRes, motherRes, spouseRes] = await Promise.all([
-            fetch(`http://localhost:5000/api/fathers/${nid}`).then(r => r.json()).catch(() => ({ success: false })),
-            fetch(`http://localhost:5000/api/mothers/${nid}`).then(r => r.json()).catch(() => ({ success: false })),
-            fetch(`http://localhost:5000/api/spouses/${nid}`).then(r => r.json()).catch(() => ({ success: false }))
+            fetch(`${API_BASE_URL}/fathers/${nid}`).then(r => r.json()).catch(() => ({ success: false })),
+            fetch(`${API_BASE_URL}/mothers/${nid}`).then(r => r.json()).catch(() => ({ success: false })),
+            fetch(`${API_BASE_URL}/spouses/${nid}`).then(r => r.json()).catch(() => ({ success: false }))
         ]);
 
         resultBox.innerHTML = `
@@ -255,17 +235,14 @@ async function searchCitizen() {
     }
 }
 
-// ===============================
 // Update & Delete Citizen
-// ===============================
-
 async function updateCitizen(nid) {
     const newBloodGroup = prompt("Enter new Blood Group (e.g. A+, B+, O-):");
 
     if (!newBloodGroup) return;
 
     try {
-        const getResponse = await fetch(`http://localhost:5000/api/citizens/${nid}`);
+        const getResponse = await fetch(`${API_BASE_URL}/citizens/${nid}`);
         const getResult = await getResponse.json();
 
         if (!getResult.success) {
@@ -275,7 +252,7 @@ async function updateCitizen(nid) {
 
         const c = getResult.data;
 
-        const response = await fetch(`http://localhost:5000/api/citizens/${nid}`, {
+        const response = await fetch(`${API_BASE_URL}/citizens/${nid}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -304,7 +281,7 @@ async function deleteCitizen(nid) {
     if (!confirmDelete) return;
 
     try {
-        const response = await fetch(`http://localhost:5000/api/citizens/${nid}`, {
+        const response = await fetch(`${API_BASE_URL}/citizens/${nid}`, {
             method: "DELETE"
         });
 
@@ -317,5 +294,47 @@ async function deleteCitizen(nid) {
         }
     } catch (error) {
         alert("Delete failed. Is the backend running?");
+    }
+}
+
+// ===============================
+// New Features & Analytics Integration
+// ===============================
+
+// Dashboard Analytics Data Fetching
+async function loadDashboardStats() {
+    try {
+        const response = await fetch(`${API_BASE_URL}/request/dashboard-stats`);
+        const data = await response.json();
+
+        if (document.getElementById('total-citizens')) {
+            document.getElementById('total-citizens').innerText = data.total_citizens || 0;
+        }
+        if (document.getElementById('pending-requests')) {
+            document.getElementById('pending-requests').innerText = data.pending_requests || 0;
+        }
+        if (document.getElementById('total-verifications')) {
+            document.getElementById('total-verifications').innerText = data.total_verifications || 0;
+        }
+    } catch (error) {
+        console.error('Error loading stats:', error);
+    }
+}
+
+// Digital NID Card Data Fetching
+async function loadNidCardData(nidNo) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/citizens/${nidNo}`);
+        const result = await response.json();
+
+        if (result.success) {
+            const citizen = result.data;
+            if (document.getElementById('card-name')) document.getElementById('card-name').innerText = citizen.full_name;
+            if (document.getElementById('card-nid')) document.getElementById('card-nid').innerText = citizen.nid_no;
+            if (document.getElementById('card-dob')) document.getElementById('card-dob').innerText = citizen.dob;
+            if (document.getElementById('card-blood')) document.getElementById('card-blood').innerText = citizen.blood_group || 'N/A';
+        }
+    } catch (error) {
+        console.error('Error fetching NID card:', error);
     }
 }
